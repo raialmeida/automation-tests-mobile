@@ -1,0 +1,7 @@
+services:
+  mobile-test:
+    image: test-mobile-appium
+    build: .
+    volumes:
+      - ./allure-results:/app/target/allure-results
+      - ./target/surefire-reports:/app/target/surefire-reports
