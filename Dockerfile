@@ -9,9 +9,26 @@ ARG APPIUM_VERSION=2.11.3
 
 # Atualizar os pacotes e instalar dependências essenciais
 RUN apt-get update && \
-    apt-get install -y curl gnupg2 procps software-properties-common unzip && \
-    apt-get install -y ca-certificates && \
-    apt-get clean
+    apt-get install -y \
+    curl \
+    gnupg2 \
+    procps \
+    software-properties-common \
+    unzip \
+    libgl1-mesa-dev \
+    libx11-dev \
+    libxkbcommon-x11-0 \
+    libxrender1 \
+    libxtst6 \
+    libqt5webkit5 \
+    libgconf-2-4 \
+    xvfb \
+    gnupg \
+    libpng16-16 \
+    libxi6 \
+    ca-certificates && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*an
 
 # Instalar Node.js
 RUN curl -fsSL https://deb.nodesource.com/setup_$NODE_VERSION | bash - && \
@@ -35,17 +52,45 @@ ENV ANDROID_HOME=$ANDROID_SDK_ROOT
 
 # Instalar pacotes Android
 RUN yes | sdkmanager --licenses && \
-    sdkmanager "platform-tools" "build-tools;35.0.2" "platforms;android-35"
+    sdkmanager "platform-tools" \
+    "build-tools;35.0.0" \
+    "platforms;android-35" \
+    "cmdline-tools;latest" \
+    "cmake;3.22.1" \
+    "tools" \
+    "ndk;27.1.12297006" \
+    "emulator" \
+    "system-images;android-31;google_apis_playstore;x86_64" \
+    "extras;android;m2repository" \
+    "extras;google;m2repository"
+
+# Instalar emulador Android e criar um dispositivo virtual (AVD)
+RUN echo "no" | avdmanager create avd -n test -k "system-images;android-31;google_apis_playstore;x86_64" --force
+
+# Iniciar o emulador Android
+RUN $ANDROID_HOME/emulator/emulator -avd test -no-window -no-audio -no-snapshot -no-accel -read-only &
 
 # Instalar Appium
 RUN npm install -g appium@${APPIUM_VERSION} && \
     npm install -g appium-doctor
+
+#Instalar uiautomator2
+RUN appium driver install uiautomator2
 
 # Verificar Appium
 RUN appium-doctor --ios --android
 
 # Expor portas (para o Appium, por exemplo)
 EXPOSE 4723
+
+# Diretório de trabalho no contêiner
+WORKDIR /app
+
+# Copie o arquivo pom.xml para o contêiner
+COPY ./pom.xml /app
+
+# Copie o código de teste para o contêiner
+COPY . /app
 
 # Comando padrão (se aplicável)
 CMD ["bash"]
