@@ -1,7 +1,17 @@
 services:
   mobile-test:
-    image: test-mobile-appium
     build: .
+    ports:
+      - "6080:6080" # Porta para acessar o VNC Web
+      - "4723:4723" # Porta para o servidor Appium
+    environment:
+      EMULATOR_DEVICE: "Samsung Galaxy S10"
+      WEB_VNC: "true"
+      APPIUM_ADDITIONAL_ARGS: --allow-cors
+      APPIUM: "true"
+    devices:
+      - "/dev/kvm:/dev/kvm" # Montando o dispositivo KVM para aceleração do emulador
+    privileged: true # Garantir que o contêiner tenha permissões para acessar o KVM
     volumes:
-      - ./allure-results:/app/target/allure-results
-      - ./target/surefire-reports:/app/target/surefire-reports
+      - ./allure-results:/app/target/allure-results # Persistir resultados do Allure
+      - ./target/surefire-reports:/app/target/surefire-reports # Persistir relatórios de testes
