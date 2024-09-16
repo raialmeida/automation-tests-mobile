@@ -10,7 +10,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <java-client-version>9.3.0</java-client-version>
@@ -19,8 +19,7 @@
         <appium.version>9.3.0</appium.version>
         <junit.version>5.11.0</junit.version>
         <allure.maven.version>2.14.0</allure.maven.version>
-		<slf4j.version>2.0.16</slf4j.version>
-
+        <slf4j.version>2.0.16</slf4j.version>
     </properties>
 
     <dependencyManagement>
@@ -53,11 +52,11 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-simple</artifactId>
-			<version>${slf4j.version}</version>
-			<scope>test</scope>
-		</dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>${slf4j.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
