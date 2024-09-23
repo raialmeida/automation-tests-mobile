@@ -12,11 +12,11 @@ public class LayoutAnimationsPage extends DSL {
     }
 
     public void menuLayoutAnimations() {
-        clickOnElementByAccessibilityId("Default Layout Animations");
+        getElementAccessibilityId("Default Layout Animations").click();
     }
 
     public void addButton() {
-        clickOnElementById("io.appium.android.apis:id/addNewButton");
+        getElementId("io.appium.android.apis:id/addNewButton").click();
     }
 
     public void validateButton(String textAtual) {

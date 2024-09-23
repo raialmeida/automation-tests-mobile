@@ -10,6 +10,6 @@ public class HomePage extends DSL {
     }
 
     public void menuAnimation() {
-        clickOnElementByAccessibilityId("Animation");
+        getElementAccessibilityId("Animation").click();
     }
 }

@@ -1,5 +1,7 @@
 package core;
 
+import org.openqa.selenium.WebElement;
+
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 
@@ -11,20 +13,20 @@ public class DSL {
         this.driver = driver;
     }
 
-    protected void clickOnElementById(String selector) {
-        driver.findElement(AppiumBy.id(selector)).click();
+    protected WebElement getElementId(String selector) {
+        return driver.findElement(AppiumBy.id(selector));
     }
 
-    protected void clickOnElementByAccessibilityId(String selector) {
-        driver.findElement(AppiumBy.accessibilityId(selector)).click();
+    protected WebElement getElementAccessibilityId(String selector) {
+        return driver.findElement(AppiumBy.accessibilityId(selector));
     }
 
-    protected void clickOnElementByUiAutomation(String selector) {
-        driver.findElement(AppiumBy.androidUIAutomator(selector)).click();
+    protected WebElement getElementUiAutomation(String selector) {
+        return driver.findElement(AppiumBy.androidUIAutomator(selector));
     }
 
     protected String validateText(String selector) {
-       String text = driver.findElement(AppiumBy.androidUIAutomator(selector)).getText();
-       return text;
+        String text = driver.findElement(AppiumBy.androidUIAutomator(selector)).getText();
+        return text;
     }
 }

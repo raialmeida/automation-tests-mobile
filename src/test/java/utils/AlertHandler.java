@@ -10,6 +10,6 @@ public class AlertHandler extends DSL {
     }
 
     public void confirmAlertaContinue() {
-        clickOnElementById("android:id/button1");
+        getElementId("android:id/button1").click();
     }
 }
