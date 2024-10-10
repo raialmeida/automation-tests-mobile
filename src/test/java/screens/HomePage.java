@@ -1,4 +1,4 @@
-package pages;
+package screens;
 
 import core.DSL;
 import io.appium.java_client.android.AndroidDriver;
