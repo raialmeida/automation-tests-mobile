@@ -11,7 +11,7 @@ import utils.AlertHandler;
 public class LayoutAnimationsTests extends DriverManager {
 
     private HomeScreen home = new HomeScreen(driver);
-    private LayoutAnimationsScreen layoutAnimationsPage = new LayoutAnimationsScreen(driver);
+    private LayoutAnimationsScreen layoutAnimations = new LayoutAnimationsScreen(driver);
     private AlertHandler alertHandler = new AlertHandler(driver);
 
     @Test
@@ -19,8 +19,8 @@ public class LayoutAnimationsTests extends DriverManager {
     public void validationAddButtonConfirmButton() {
         alertHandler.confirmAlertaContinue();
         home.menuAnimation();
-        layoutAnimationsPage.menuLayoutAnimations();
-        layoutAnimationsPage.addButton();
-        layoutAnimationsPage.validateButton("1");
+        layoutAnimations.menuLayoutAnimations();
+        layoutAnimations.addButton();
+        layoutAnimations.validateButton("1");
     }
 }
