@@ -3,9 +3,9 @@ package screens;
 import core.DSL;
 import io.appium.java_client.android.AndroidDriver;
 
-public class HomePage extends DSL {
+public class HomeScreen extends DSL {
 
-    public HomePage(AndroidDriver driver) {
+    public HomeScreen(AndroidDriver driver) {
         super(driver);
     }
 

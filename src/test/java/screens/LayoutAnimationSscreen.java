@@ -5,9 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import core.DSL;
 import io.appium.java_client.android.AndroidDriver;
 
-public class LayoutAnimationsPage extends DSL {
+public class LayoutAnimationsScreen extends DSL {
 
-    public LayoutAnimationsPage(AndroidDriver driver) {
+    public LayoutAnimationsScreen(AndroidDriver driver) {
         super(driver);
     }
 

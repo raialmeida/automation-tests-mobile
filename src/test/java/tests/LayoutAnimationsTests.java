@@ -4,14 +4,14 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import core.DriverManager;
-import screens.HomePage;
-import screens.LayoutAnimationsPage;
+import screens.HomeScreen;
+import screens.LayoutAnimationsScreen;
 import utils.AlertHandler;
 
 public class LayoutAnimationsTests extends DriverManager {
 
-    private HomePage home = new HomePage(driver);
-    private LayoutAnimationsPage layoutAnimationsPage = new LayoutAnimationsPage(driver);
+    private HomeScreen home = new HomeScreen(driver);
+    private LayoutAnimationsScreen layoutAnimationsPage = new LayoutAnimationsScreen(driver);
     private AlertHandler alertHandler = new AlertHandler(driver);
 
     @Test
